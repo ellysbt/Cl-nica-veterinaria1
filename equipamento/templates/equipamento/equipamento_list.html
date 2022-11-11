@@ -1,0 +1,34 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+
+<h3>Listagem de Funcionarios</h3>
+
+<form style="margin-bottom: 20px;" method="GET">
+    <input type="text" name="nome" placeholder="Buscar por Funcionario"/>
+    <input type="submit" value="Buscar"/>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>Equipamento</th>
+            <th>Medicamento</th>
+            <th>Material</th>
+            <th>Opções</th>
+        </tr>
+        <tbody>
+            {% for equipamento in object_list %}
+            <tr>
+                <td>{{ equipamento.nome_equipamento }}</td>
+                <td>{{ equipamento.nome_medicamento }}</td>
+                <td>{{ equipamento.nome_material }}</td>
+                <td>
+                    <a style="color: darkslateblue; text-decoration: none;" href="{% url 'equipamento.editar' equipamento.pk %}">Editar</a>
+                    <a style="color: darkslateblue; text-decoration: none;" href="{% url 'equipamento.excluir' equipamento.pk %}">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </thead>
+</table>
+{% endblock content %}

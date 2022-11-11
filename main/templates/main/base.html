@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinica Veterinária</title>
+</head>
+<body>
+    <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'funcionario.index' %}">Funcionarios</a></li>
+        <li><a href="{% url 'funcionario.novo' %}">Novo Funcionario</a></li>
+        <li><a href="{% url 'animal.index' %}">Animais</a></li>
+        <li><a href="{% url 'animal.novo' %}">Novo Animal</a></li>
+        <li><a href="{% url 'equipamento.index' %}">Equipamentos</a></li>
+        <li><a href="{% url 'equipamento.novo' %}">Novo Equipamento</a></li>
+        <li><a href="{% url 'cliente.index' %}">Clientes</a></li>
+        <li><a href="{% url 'cliente.novo' %}">Novo Cliente</a></li>
+        <li><a href="{% url 'triagem.index' %}">Triagens</a></li>
+        <li><a href="{% url 'triagem.novo' %}">Nova Triagem</a></li>
+
+        
+    </ul>
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>

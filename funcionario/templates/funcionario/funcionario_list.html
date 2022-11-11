@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+
+<h3>Listagem de Funcionarios</h3>
+
+<form style="margin-bottom: 20px;" method="GET">
+    <input type="text" name="nome" placeholder="Buscar por Funcionario"/>
+    <input type="submit" value="Buscar"/>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>Nome Completo</th>
+            <th>Data de Nascimento</th>
+            <th>RG</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Opções</th>
+        </tr>
+        <tbody>
+            {% for funcionario in object_list %}
+            <tr>
+                <td>{{ funcionario.nome_completo_func }}</td>
+                <td>{{ funcionario.data_nascimento_func|date:'d/m/Y' }}</td>
+                <td>{{ funcionario.rg_func }}</td>
+                <td>{{ funcionario.cpf_func }}</td>
+                <td>{{ funcionario.telefone_func }}</td>
+                <td>{{ funcionario.email_func }}</td>
+                <td>
+                    <a style="color: darkslateblue; text-decoration: none;" href="{% url 'funcionario.editar' funcionario.pk %}">Editar</a>
+                    <a style="color: darkslateblue; text-decoration: none;" href="{% url 'funcionario.excluir' funcionario.pk %}">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </thead>
+</table>
+{% endblock content %}

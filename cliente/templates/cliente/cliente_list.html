@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+
+<h3>Listagem de Funcionarios</h3>
+
+<form style="margin-bottom: 20px;" method="GET">
+    <input type="text" name="nome" placeholder="Buscar por Funcionario"/>
+    <input type="submit" value="Buscar"/>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>Nome Completo</th>
+            <th>Data de Nascimento</th>
+            <th>RG</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Opções</th>
+        </tr>
+        <tbody>
+            {% for cliente in object_list %}
+            <tr>
+                <td>{{ cliente.nome_completo_cli }}</td>
+                <td>{{ cliente.data_nascimento_cli|date:'d/m/Y' }}</td>
+                <td>{{ cliente.rg_cli }}</td>
+                <td>{{ cliente.cpf_cli }}</td>
+                <td>{{ cliente.telefone_cli }}</td>
+                <td>{{ cliente.email_cli }}</td>
+                <td>
+                    <a style="color: darkslateblue; text-decoration: none;" href="{% url 'cliente.editar' cliente.pk %}">Editar</a>
+                    <a style="color: darkslateblue; text-decoration: none;" href="{% url 'cliente.excluir' cliente.pk %}">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </thead>
+</table>
+{% endblock content %}

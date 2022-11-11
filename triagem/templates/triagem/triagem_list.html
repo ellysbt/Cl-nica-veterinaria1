@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+
+<h3>Listagem de Triagens</h3>
+
+<form style="margin-bottom: 20px;" method="GET">
+    <input type="text" name="nome" placeholder="Buscar por Animal"/>
+    <input type="submit" value="Buscar"/>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>Nome do Pet</th>
+            <th>Sintomas</th>
+            <th>Opções</th>
+        </tr>
+        <tbody>
+            {% for triagem in object_list %}
+            <tr>
+                <td>{{ triagem.nome_do_pet }}</td>
+                <td>{{ triagem.sintomas }}</td>
+                <td>
+                    <a style="color: darkslateblue; text-decoration: none;" href="{% url 'triagem.editar' triagem.pk %}">Editar</a>
+                    <a style="color: darkslateblue; text-decoration: none;" href="{% url 'triagem.excluir' triagem.pk %}">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </thead>
+</table>
+{% endblock content %}
